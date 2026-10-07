@@ -1,0 +1,33 @@
+import random
+
+def solve():
+    player_score = 0
+    computer_score = 0
+    for r in range(1, 4):
+        print("\nRound " + str(r) + " of 3")
+        print("Rock, paper, or scissors?")
+        s = input("- ")
+        s = s.lower()
+        if s != "rock" and s != "paper" and s != "scissors":
+            print("Invalid choice")
+        choices = ["rock", "paper", "scissors"]
+        comp = random.choice(choices)
+        print("Computer's choice:")
+        print("- " + comp)
+        if s == comp:
+            print("TIE!")
+        elif ((s == "rock" and comp == "scissors") or (s == "paper" and comp == "rock") or (s == "scissors" and comp == "paper")):
+            print("YOU WON!")
+            player_score += 1
+        else:
+            print("COMPUTER WON!")
+            computer_score += 1
+        print("Score: You " + str(player_score) + " - " + str(computer_score) + " Computer")
+    if player_score > computer_score:
+        print("\nYou won the game!")
+    elif computer_score > player_score:
+        print("\nComputer won the game!")
+    else:
+        print("\nThe game is a tie!")
+
+solve()
