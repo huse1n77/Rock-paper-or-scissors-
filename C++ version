@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+// rock paper scissors 3 rounds
+void solve() {
+    int player_score = 0;
+    int computer_score = 0;
+    for (int r = 1; r <= 3; r++)
+    {
+        string s;
+        cout << "\nRound " << r << " of 3\n";
+        cout << "Rock, paper, or scissors?\n";
+        cout << "- ";
+        cin >> s;
+        for (char& c : s)
+        {
+            c = tolower(c);
+        }
+        if (s != "rock" and s != "paper" and s != "scissors") {
+            cout << "Invalid choice\n";
+        }
+        string c[] = {"rock", "paper", "scissors"};
+        string comp = c[rand() % 3];
+        cout << "Computer's choice:\n";
+        cout << "- " << comp << endl;
+        if (s == comp) {
+            cout << "TIE!\n";
+        }
+        else if ((s == "rock" and comp == "scissors") or (s == "paper" and comp == "rock") or (s == "scissors" and comp == "paper"))
+        {
+            cout << "YOU WON!\n";
+            player_score++;
+        }
+        else {
+            cout << "COMPUTER WON!\n";
+            computer_score++;
+        }
+
+        cout << "Score: You " << player_score << " - " << computer_score << " Computer\n";
+    }
+    if (player_score > computer_score) {
+        cout << "\nYou won the game!\n";
+    }
+    else if (computer_score > player_score) {
+        cout << "\nComputer won the game!\n";
+    }
+    else {
+        cout << "\nThe game is a tie!\n";
+    }
+}
+
+signed main() {
+    solve();
+}
